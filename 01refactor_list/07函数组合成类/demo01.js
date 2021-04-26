@@ -27,23 +27,59 @@ function taxThreshold(year) {
     return 25;
 }
 
+class Reading {
+
+    constructor(data) {
+        this._customer = data.customer;
+        this._quantity = data.quantity;
+        this._month = data.month;
+        this._year  = data.year;
+    }
+
+    get customer() {
+        return this._customer;
+    }
+
+    get quantity() {
+        return this._quantity;
+    }
+
+    get month() {
+        return this._month;
+    }
+
+    get year() {
+        return this._year;
+    }
+
+
+    get baseCharge() {
+        return  baseRate(this._month, this._year) * this._quantity;
+    }
+
+    get taxableCharge() {
+        return  Math.max(0, this.baseCharge - taxThreshold(this._year))
+    }
+
+}
+
+
 //客户端1
-const aReading = acquireReading();
-const baseCharge = baseRate(aReading.month, aReading.year) * aReading.quantity;
+const aReading1 = new Reading(acquireReading());
+const baseCharge = aReading1.baseCharge;
+console.log(baseCharge)
 
 //客户端2
-const aReading2 = acquireReading();
-const base2 = (baseRate(aReading.month, aReading.year) * aReading.quantity);
-const taxableCharge2 = Math.max(0, base2 - taxThreshold(aReading.year))
-console.log(taxableCharge2);
+const aReading2 = new Reading(acquireReading());
+const taxableCharge = aReading2.taxableCharge;
+console.log(taxableCharge)
 
 //客户端3
-const aReading3 = acquireReading();
-const basicChargeAmount3 = calculateBaseCharge(aReading3);
-function calculateBaseCharge(aReading) {
-    return baseRate(aReading.month, aReading.year) * aReading.quantity;
-}
-console.log(basicChargeAmount3)
+const aReading3 = new Reading(acquireReading());
+const basicChargeAmount = aReading3.baseCharge
+console.log(basicChargeAmount)
+
+
 
 
 
