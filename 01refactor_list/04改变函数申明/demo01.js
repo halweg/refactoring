@@ -17,11 +17,8 @@ class Book {
         this.reservations = [];
     }
     //......省略了一些代码
-    addReservation(customer) {
-        this.zz_reservations(customer, false);
-    }
 
-    zz_reservations(customer, isVip) {
+    addReservation(customer, isVip) {
         //assert(isVip === false || isVip === true);
         //if isVip else ... 省略一些代码
         this.reservations.push(customer);
@@ -30,9 +27,9 @@ class Book {
 
 let book = new Book;
 
-book.zz_reservations("halweg", false);
-book.zz_reservations("peter", true);
-book.zz_reservations("song", false);
+book.addReservation("halweg", false);
+book.addReservation("peter", true);
+book.addReservation("song", false);
 
 console.log(book.reservations);
 
