@@ -8,9 +8,9 @@ const station = { name: "ZB1",
     ]
 };
 
-function readingsOutsideRange(station, min, max, RangeNum) {
+function readingsOutsideRange(station, RangeNum) {
     return station.readings
-        .filter(r => r.temp < min || r.temp > max);
+        .filter(r => r.temp < RangeNum.min || r.temp > RangeNum.max);
 }
 
 class RangeNum {
@@ -28,4 +28,6 @@ class RangeNum {
     }
 }
 
-console.log(readingsOutsideRange(station, 50, 55, null));
+const rangeNum = new RangeNum(50, 55);
+
+console.log(readingsOutsideRange(station,  rangeNum));
