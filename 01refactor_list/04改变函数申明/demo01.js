@@ -1,4 +1,3 @@
-import assert from 'assert'
 /*function circum(radius) {
     return 2 * Math.PI * radius;
 }*/
@@ -23,7 +22,7 @@ class Book {
     }
 
     zz_reservations(customer, isVip) {
-        assert(isVip === false || isVip === true);
+        //assert(isVip === false || isVip === true);
         //if isVip else ... 省略一些代码
         this.reservations.push(customer);
     }
@@ -31,9 +30,9 @@ class Book {
 
 let book = new Book;
 
-book.addReservation("halweg");
-book.addReservation("peter");
-book.addReservation("song");
+book.zz_reservations("halweg", false);
+book.zz_reservations("peter", true);
+book.zz_reservations("song", false);
 
 console.log(book.reservations);
 
