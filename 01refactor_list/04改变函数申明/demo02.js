@@ -20,17 +20,13 @@ let someCustomers = [];
 someCustomers.push(aCustomer1);
 someCustomers.push(aCustomer2);
 
-function inNewEngland(aCustomer) {
-    //const state = aCustomer.address.state;
-    return  zz_tmp_inNewEngland(aCustomer.address.state);
-}
 
-function zz_tmp_inNewEngland(state) {
+function inNewEngland(state) {
     return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(state);
 }
 
-const newEnglanders = someCustomers.filter(c => zz_tmp_inNewEngland(c.address.state));
-const newEnglanders2 = someCustomers.filter(c => zz_tmp_inNewEngland(c.address.state));
+const newEnglanders = someCustomers.filter(c => inNewEngland(c.address.state));
+const newEnglanders2 = someCustomers.filter(c => inNewEngland(c.address.state));
 console.log(newEnglanders)
 console.log(newEnglanders2)
 
