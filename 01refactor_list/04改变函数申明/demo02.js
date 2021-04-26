@@ -29,6 +29,8 @@ function zz_tmp_inNewEngland(state) {
     return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(state);
 }
 
-const newEnglanders = someCustomers.filter(c => inNewEngland(c));
+const newEnglanders = someCustomers.filter(c => zz_tmp_inNewEngland(c.address.state));
+const newEnglanders2 = someCustomers.filter(c => zz_tmp_inNewEngland(c.address.state));
 console.log(newEnglanders)
+console.log(newEnglanders2)
 
