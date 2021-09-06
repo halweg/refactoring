@@ -1,30 +1,62 @@
 class Person {
-    get name() {
-        return this._name;
+
+    constructor() {
+        this._telephoneNumber = new TelephoneNumber()
     }
 
     set name(arg) {
         this._name = arg;
     }
 
+    set officeAreaCode(arg) {
+        this._telephoneNumber.officeAreaCode = arg;
+    }
+
+
+    set officeNumber(arg) {
+        this._telephoneNumber.officeNumber = arg;
+    }
+
+    get name() {
+        return this._name;
+    }
+
     get telephoneNumber() {
-        return `(${this.officeAreaCode}) ${this.officeNumber}`;
+        return  this._telephoneNumber.toString();
     }
 
     get officeAreaCode() {
-        return this._officeAreaCode;
+        return this._telephoneNumber.officeAreaCode;
     }
+
+    get officeNumber() {
+        return this._telephoneNumber.officeNumber;
+    }
+
+}
+
+class TelephoneNumber {
 
     set officeAreaCode(arg) {
         this._officeAreaCode = arg;
+    }
+
+
+    set officeNumber(arg) {
+        this._officeNumber = arg;
+    }
+
+
+    get officeAreaCode() {
+        return this._officeAreaCode;
     }
 
     get officeNumber() {
         return this._officeNumber;
     }
 
-    set officeNumber(arg) {
-        this._officeNumber = arg;
+    toString() {
+        return `(${this.officeAreaCode}) ${this.officeNumber}`;
     }
 }
 
